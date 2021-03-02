@@ -274,7 +274,7 @@ public class WifiApConfigStore {
         SoftApConfiguration.Builder configBuilder = new SoftApConfiguration.Builder();
         configBuilder.setBand(SoftApConfiguration.BAND_2GHZ);
         configBuilder.setSsid(mContext.getResources().getString(
-                R.string.wifi_tether_configure_ssid_default) + "_" + getRandomIntForDefaultSsid());
+                R.string.wifi_tether_configure_ssid_default));
         if (ApConfigUtil.isWpa3SaeSupported(mContext)) {
             configBuilder.setPassphrase(generatePassword(),
                     SoftApConfiguration.SECURITY_TYPE_WPA3_SAE_TRANSITION);
@@ -285,15 +285,9 @@ public class WifiApConfigStore {
         return configBuilder.build();
     }
 
-    private static int getRandomIntForDefaultSsid() {
-        Random random = new Random();
-        return random.nextInt((RAND_SSID_INT_MAX - RAND_SSID_INT_MIN) + 1) + RAND_SSID_INT_MIN;
-    }
-
     private static String generateLohsSsid(Context context) {
         return context.getResources().getString(
-                R.string.wifi_localhotspot_configure_ssid_default) + "_"
-                + getRandomIntForDefaultSsid();
+                R.string.wifi_localhotspot_configure_ssid_default);
     }
 
     /**
